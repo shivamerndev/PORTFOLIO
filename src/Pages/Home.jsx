@@ -1,12 +1,13 @@
 import React from 'react'
 import Start from '../cyclender/Start'
+import Hero from '../components/Hero'
 
 const Home = () => {
   return (
     <main className='min-h-full w-full '>
 
       <section>
-        hero
+        <Hero/>
       </section>
 
       <section className='bg-gray-900'>
