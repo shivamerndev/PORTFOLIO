@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
 
+/* ── Locomotive Scroll: root must be fixed height so loco can take over ── */
+html,
+body,
+#root {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ── Smooth will-change hint for GSAP-animated elements ─────────────── */
+[data-scroll-container] {
+    will-change: transform;
+}
+
+/* ── Tech icon hover glow ────────────────────────────────────────────── */
+figure img[alt]:not([alt='Shivam Kumar']) {
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+figure img[alt]:not([alt='Shivam Kumar']):hover {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.55));
+    transform: scale(1.15) !important;
+    z-index: 5 !important;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -146,17 +169,6 @@
     animation: pulseGlow 2.5s infinite;
 }
 
-.nav-link {
-    transition: color 0.25s ease;
-}
-
-.nav-link:hover {
-    color: #fff;
-}
-
-.social-icon {
-    transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
-}
 
 .social-icon:hover {
     border-color: #fff !important;
