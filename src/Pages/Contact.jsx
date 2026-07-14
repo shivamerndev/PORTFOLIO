@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import Navbar from '../components/Navbar'
+import useTheme from '../hooks/useTheme'
 import '../styles/hero.css'
 import '../styles/contact.css'
 
@@ -88,6 +89,7 @@ const SOCIALS = [
 
 /* ── Component ──────────────────────────────────────────────────────── */
 const Contact = () => {
+  const { isDark } = useTheme()
   const pageRef = useRef(null)
   const headingRef = useRef(null)
   const subRef = useRef(null)
@@ -147,7 +149,7 @@ const Contact = () => {
   }
 
   return (
-    <div ref={pageRef} className="relative min-h-screen w-full bg-black text-white overflow-x-hidden font-sans">
+    <div ref={pageRef} className={`relative min-h-screen w-full overflow-x-hidden font-sans transition-colors duration-500 ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
 
       {/* ── Decorative blobs ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">

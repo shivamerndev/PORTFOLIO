@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { techIcons } from '../utils/icons'
+import useTheme from '../hooks/useTheme'
 import '../styles/hero.css'
 
 
 const Hero = () => {
 
+    const { isDark } = useTheme()
     const sectionRef = useRef(null)
     const titleRef = useRef(null)
     const subtitleRef = useRef(null)
@@ -79,17 +81,17 @@ const Hero = () => {
     }, [])
 
     return (
-        <section ref={sectionRef} className="relative w-full h-full overflow-hidden bg-black flex flex-col font-sans text-white">
+        <section ref={sectionRef} className={`relative w-full h-full overflow-hidden flex flex-col font-sans transition-colors duration-500 ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
 
             <div className="relative flex-1 w-full h-full flex flex-col items-center justify-center">
 
 
-                <div className="absolute inset-0 flex items-center justify-center text-[10vw] leading-none font-bold uppercase text-white select-none whitespace-nowrap">
+                <div className={`absolute inset-0 flex items-center justify-center text-[10vw] leading-none font-bold uppercase select-none whitespace-nowrap ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     <div className='flex flex-col gap-5'>
                         <h1 ref={titleRef} style={{ opacity: 0 }}>
                             Shivam&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Verma
                         </h1>
-                        <div ref={subtitleRef} className='text-sm w-full bg-black/50 flex justify-between px-4' style={{ opacity: 0 }}>
+                        <div ref={subtitleRef} className={`text-sm w-full flex justify-between px-4`} style={{ opacity: 0 }}>
                             <p>Full Stack Developer</p>
                             <p>passionate learner</p>
                         </div>
@@ -113,8 +115,8 @@ const Hero = () => {
                 </figure>
 
 
-                <div ref={socialRef} className="absolute z-50 bottom-0 left-0 h-1/2 w-1/2 flex items-center justify-center" style={{ opacity: 0 }}>
-                    <div className="h-3/4 w-1/2 bg-white/5 rounded-xl backdrop-blur-md flex items-center justify-center text-xl">
+                <div ref={socialRef} className="absolute z-50 bottom-30 left-10 h-1/3 w-60 rounded-xl  flex items-center justify-center" style={{ opacity: 0 }}>
+                    <div className={`h-full w-full border-b border-t rounded-xl backdrop-blur-md flex items-center justify-center text-xl ${isDark ? 'bg-white/5' : 'bg-black/5'}`}>
                         <ul className="flex flex-col gap-5">
                             {
                                 ['Instagram', 'LinkedIn', 'Github'].map((name) => (

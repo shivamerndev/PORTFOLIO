@@ -15,7 +15,7 @@ const Cylender = () => {
   })
 
   return (
-    <mesh ref={meshRef} rotation={[0, 0, 0.2]}>
+    <mesh ref={meshRef} rotation={[0, 0, 0.3]}>
       <cylinderGeometry args={[1, 1, 1, 30, 30, true]} />
       <meshStandardMaterial map={texture} transparent side={Three.DoubleSide} />
     </mesh>

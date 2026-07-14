@@ -175,3 +175,18 @@ figure img[alt]:not([alt='Shivam Kumar']):hover {
     color: #fff !important;
     transform: scale(1.12);
 }
+
+/* ── Light mode overrides ─────────────────────────────────────────── */
+html.light .big-text,
+html.light .big-text-sm {
+    color: #111;
+}
+
+html.light .profile-img {
+    filter: grayscale(0%) contrast(1);
+}
+
+html.light .social-icon:hover {
+    border-color: #111 !important;
+    color: #111 !important;
+}

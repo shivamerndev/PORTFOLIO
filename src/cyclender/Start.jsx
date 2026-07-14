@@ -6,8 +6,8 @@ import Cylender from './Cylender'
 const Start = () => {
 
     return (
-        <Canvas camera={{fov : 35}}>
-            <OrbitControls />
+        <Canvas camera={{fov : 25}}>
+            {/* <OrbitControls /> */}
             <ambientLight/>
             {/* <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} /> */}
