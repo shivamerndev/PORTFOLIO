@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Hide the native cursor everywhere */
+*, *::before, *::after {
+  cursor: none !important;
+}
