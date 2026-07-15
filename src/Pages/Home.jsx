@@ -6,6 +6,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LocomotiveScroll from 'locomotive-scroll'
 import 'locomotive-scroll/dist/locomotive-scroll.css'
+import Projects from '../components/Projects'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,10 +19,6 @@ const Home = () => {
     const el = containerRef.current
     if (!el) return
 
-    // ── Locomotive Scroll v5 ──────────────────────────────────────────
-    // v5 no longer uses the v4 API (no .on(), no .scroll.instance.scroll.y)
-    // Instead, v5 exposes a Lenis instance via locoScroll.lenisOptions
-    // and emits native scroll events on the window/element.
     const locoScroll = new LocomotiveScroll({
       lenisOptions: {
         wrapper: el,
@@ -33,12 +30,9 @@ const Home = () => {
       },
     })
 
-    // ── Bridge loco v5 → GSAP ScrollTrigger ──────────────────────────
-    // In v5, the internal Lenis instance is at locoScroll.lenisInstance (or lenis)
     const lenis = locoScroll.lenisInstance
 
     if (lenis) {
-      // Tell GSAP ScrollTrigger to use the Lenis scroll position
       ScrollTrigger.scrollerProxy(window, {
         scrollTop(value) {
           if (arguments.length) {
@@ -51,17 +45,14 @@ const Home = () => {
         },
       })
 
-      // Keep ScrollTrigger in sync with Lenis scroll events
       lenis.on('scroll', ScrollTrigger.update)
       ScrollTrigger.addEventListener('refresh', () => lenis.emit('scroll', { scroll: lenis.scroll }))
     } else {
-      // Fallback: use native window scroll if lenis isn't accessible
       ScrollTrigger.refresh()
     }
 
     ScrollTrigger.refresh()
 
-    // ── Section 2 (Start) scroll-in animation ─────────────────────────
     gsap.fromTo(
       '#start-section',
       { opacity: 0, y: 80 },
@@ -90,12 +81,14 @@ const Home = () => {
 
     <Navbar />
 
-    <section data-scroll-section className='h-screen w-full' id='hero-section'>
+    <section className='h-screen w-full sticky top-0' id='hero-section'>
       <Hero />
     </section>
 
-    <section data-scroll-section className='h-screen w-full bg-gray-900' id='start-section'>
-      <Start />
+    <section className='h-screen sticky top-[45vh] z-10 w-full bg-gray-900 mt-10'>
+      <Projects />
+      <Projects />
+      <Projects />  
     </section>
 
   </main>
