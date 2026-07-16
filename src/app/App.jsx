@@ -7,7 +7,7 @@ const App = () => {
 
   return (
     <div className={`h-screen w-full transition-colors duration-500 ${isDark ? 'bg-black text-white' : 'bg-white text-gray-900'}`}>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <Outlet />
     </div>
   )
